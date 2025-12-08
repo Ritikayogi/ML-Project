@@ -8,5 +8,6 @@ seaborn
 catboost
 xgboost
 mlflow
+streamlit
 
 #-e . 
