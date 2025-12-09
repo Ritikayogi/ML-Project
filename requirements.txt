@@ -3,7 +3,7 @@ pandas
 python-dotenv
 mysql-connector-python
 pymysql
-scikit-learn
+scikit-learn==1.6.1
 seaborn
 catboost
 xgboost
