@@ -7,16 +7,21 @@ from src.mlproject.utils import load_object
 class PredictPipeline:
     def predict(self, features):
         try:
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(_file_)))
+            project_root = os.path.abspath(
+                os.path.join(
+                    os.path.dirname(__file__),
+                    "../../../"
+                )
+            )
 
-            model_path = os.path.join(base_dir, "artifacts", "model.pkl")
-            preprocessor_path = os.path.join(base_dir, "artifacts", "preprocessor.pkl")
+            model_path = os.path.join(project_root, "artifacts", "model.pkl")
+            preprocessor_path = os.path.join(project_root, "artifacts", "preprocessor.pkl")
 
             model = load_object(model_path)
             preprocessor = load_object(preprocessor_path)
 
-            data_transformed = preprocessor.transform(features)
-            prediction = model.predict(data_transformed)
+            transformed_data = preprocessor.transform(features)
+            prediction = model.predict(transformed_data)
 
             return prediction
 
